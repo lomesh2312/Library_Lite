@@ -43,11 +43,11 @@ Get reminded (and remind users) about upcoming due dates. Automatically track la
 •⁠  𝗦𝗲𝗮𝗿𝗰𝗵 𝗙𝘂𝗻𝗰𝘁𝗶𝗼𝗻:
 Find any book fast by searching title, author, genre, or availability. Never waste time looking through long lists or physical logs.
 
-•⁠  ⁠Reports:
+•⁠  ⁠𝗥𝗲𝗽𝗼𝗿𝘁𝘀:
 Generate visual and tabular reports for book usage, overdue returns, and penalties. Reports can be daily, weekly, or monthly, giving a fast overview of library health and usage patterns.
 
-•⁠  ⁠Dashboard:
+•⁠  ⁠𝗗𝗮𝘀𝗵𝗯𝗼𝗮𝗿𝗱:
 See at-a-glance metrics—total books, books on loan, overdue returns, and fast access to common actions.
 
-•⁠  ⁠User/Admin Panel:
+•⁠  ⁠𝗨𝘀𝗲𝗿/𝗔𝗱𝗺𝗶𝗻 𝗣𝗮𝗻𝗲𝗹:
 Manage user profiles and admin settings for added security and customization.
