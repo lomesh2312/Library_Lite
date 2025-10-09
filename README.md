@@ -26,28 +26,37 @@ Library Lite is a robust full stack web application designed to streamline libra
 𝐌𝐚𝐢𝐧 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬
 
 •⁠  ⁠𝗕𝗼𝗼𝗸𝘀 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁:
+
 Add, edit, delete, and view books with all details. Keep genres, titles, and author links up-to-date and error-free.
 
 •⁠  𝗔𝘂𝘁𝗵𝗼𝗿𝘀 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁:
+
 Maintain a clean, searchable author directory. Authors can be added, edited, deleted, or quickly found from any connected book record.
 
 •⁠  ⁠𝗖𝗼𝗽𝗶𝗲𝘀 𝗛𝗮𝗻𝗱𝗹𝗶𝗻𝗴:
+
 Track multiple copies for any book. Know exactly how many copies exist, which are available, and which are out on loan.
 
 •⁠  ⁠𝗟𝗼𝗮𝗻 & 𝗥𝗲𝘁𝘂𝗿𝗻 𝗦𝘆𝘀𝘁𝗲𝗺:
+
 Issue books to users (staff/students), assign due dates, and record every return. Overdue books and late fees are flagged, and penalties computed as per policy, updating records automatically.
 
 •⁠  ⁠𝗗𝘂𝗲 𝗗𝗮𝘁𝗲𝘀 & 𝗣𝗲𝗻𝗮𝗹𝘁𝗶𝗲𝘀:
+
 Get reminded (and remind users) about upcoming due dates. Automatically track late returns and apply penalties, reducing manual work.
 
 •⁠  𝗦𝗲𝗮𝗿𝗰𝗵 𝗙𝘂𝗻𝗰𝘁𝗶𝗼𝗻:
+
 Find any book fast by searching title, author, genre, or availability. Never waste time looking through long lists or physical logs.
 
 •⁠  ⁠𝗥𝗲𝗽𝗼𝗿𝘁𝘀:
+
 Generate visual and tabular reports for book usage, overdue returns, and penalties. Reports can be daily, weekly, or monthly, giving a fast overview of library health and usage patterns.
 
 •⁠  ⁠𝗗𝗮𝘀𝗵𝗯𝗼𝗮𝗿𝗱:
+
 See at-a-glance metrics—total books, books on loan, overdue returns, and fast access to common actions.
 
 •⁠  ⁠𝗨𝘀𝗲𝗿/𝗔𝗱𝗺𝗶𝗻 𝗣𝗮𝗻𝗲𝗹:
+
 Manage user profiles and admin settings for added security and customization.
