@@ -60,3 +60,14 @@ See at-a-glance metrics—total books, books on loan, overdue returns, and fast 
 •⁠  ⁠𝗨𝘀𝗲𝗿/𝗔𝗱𝗺𝗶𝗻 𝗣𝗮𝗻𝗲𝗹:
 
 Manage user profiles and admin settings for added security and customization.
+
+
+Tech Stack
+
+•⁠  ⁠Frontend: React with React Router for smooth navigation, styled using TailwindCSS or Bootstrap, and Axios for making API requests.
+
+•⁠  ⁠Backend: Node.js and Express for fast, scalable APIs, with Prisma simplifying safe and efficient access to a MySQL database.
+
+•⁠  ⁠Database: MySQL (managed through Prisma ORM).
+
+•⁠  ⁠Dev Tools: Postman (API testing), VS Code, GitHub for tracking and collaboration
