@@ -24,6 +24,7 @@ Library Lite is a robust full stack web application designed to streamline libra
 
 ---
 𝐌𝐚𝐢𝐧 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬
+
 •⁠  ⁠𝗕𝗼𝗼𝗸𝘀 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁:
 Add, edit, delete, and view books with all details. Keep genres, titles, and author links up-to-date and error-free.
 
