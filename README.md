@@ -23,7 +23,7 @@ Library Lite is a robust full stack web application designed to streamline libra
 •⁠  ⁠Lets users and staff find any book instantly with a search bar that works by title, author, genre, or availability.
 
 ---
-𝐌𝐚𝐢𝐧 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬
+𝐌𝐚𝐢𝐧 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬 👇👇
 
 •⁠  ⁠𝗕𝗼𝗼𝗸𝘀 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁:
 
@@ -62,12 +62,12 @@ See at-a-glance metrics—total books, books on loan, overdue returns, and fast 
 Manage user profiles and admin settings for added security and customization.
 
 
-Tech Stack
+𝐓𝐞𝐜𝐡 𝐒𝐭𝐚𝐜𝐤 👇👇
 
-•⁠  ⁠Frontend: React with React Router for smooth navigation, styled using TailwindCSS or Bootstrap, and Axios for making API requests.
+•⁠  ⁠𝗙𝗿𝗼𝗻𝘁𝗲𝗻𝗱: React with React Router for smooth navigation, styled using TailwindCSS or Bootstrap, and Axios for making API requests.
 
-•⁠  ⁠Backend: Node.js and Express for fast, scalable APIs, with Prisma simplifying safe and efficient access to a MySQL database.
+•⁠  ⁠𝗕𝗮𝗰𝗸𝗲𝗻𝗱: Node.js and Express for fast, scalable APIs, with Prisma simplifying safe and efficient access to a MySQL database.
 
-•⁠  ⁠Database: MySQL (managed through Prisma ORM).
+•⁠  𝗗𝗮𝘁𝗮𝗯𝗮𝘀𝗲: MySQL (managed through Prisma ORM).
 
-•⁠  ⁠Dev Tools: Postman (API testing), VS Code, GitHub for tracking and collaboration
+•⁠  𝗗𝗲𝘃 𝗧𝗼𝗼𝗹𝘀: Postman (API testing), VS Code, GitHub for tracking and collaboration
