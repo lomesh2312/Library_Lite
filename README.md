@@ -1,1 +1,1 @@
-# Library_Lite
+Library Lite — Full Stack Library Management System.
