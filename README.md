@@ -22,6 +22,7 @@ Library Lite is a robust full stack web application designed to streamline libra
 
 •⁠  ⁠Lets users and staff find any book instantly with a search bar that works by title, author, genre, or availability.
 
+
 ---
 ✨ 𝐌𝐚𝐢𝐧 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬 👇👇
 
@@ -60,6 +61,7 @@ See at-a-glance metrics—total books, books on loan, overdue returns, and fast 
 
 Manage user profiles and admin settings for added security and customization.
 
+
 ---
 🧱 𝐓𝐞𝐜𝐡 𝐒𝐭𝐚𝐜𝐤 👇👇
 
@@ -73,7 +75,7 @@ Manage user profiles and admin settings for added security and customization.
 
 
 ---
-Why Library Lite?
+🤨 𝐖𝐡𝐲 𝐋𝐢𝐛𝐫𝐚𝐫𝐲 𝐋𝐢𝐭𝐞?
 
 •⁠  ⁠Removes paperwork, brings real-time visibility, and keeps every transaction secure and logged.
 
