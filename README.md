@@ -56,7 +56,6 @@ Generate visual and tabular reports for book usage, overdue returns, and penalti
 •⁠  ⁠𝗗𝗮𝘀𝗵𝗯𝗼𝗮𝗿𝗱:
 
 See at-a-glance metrics—total books, books on loan, overdue returns, and fast access to common actions.
-
 •⁠  ⁠𝗨𝘀𝗲𝗿/𝗔𝗱𝗺𝗶𝗻 𝗣𝗮𝗻𝗲𝗹:
 
 Manage user profiles and admin settings for added security and customization.
@@ -71,3 +70,15 @@ Manage user profiles and admin settings for added security and customization.
 •⁠  𝗗𝗮𝘁𝗮𝗯𝗮𝘀𝗲: MySQL (managed through Prisma ORM).
 
 •⁠  𝗗𝗲𝘃 𝗧𝗼𝗼𝗹𝘀: Postman (API testing), VS Code, GitHub for tracking and collaboration
+
+
+---
+Why Library Lite?
+
+•⁠  ⁠Removes paperwork, brings real-time visibility, and keeps every transaction secure and logged.
+
+•⁠  ⁠Makes life easier for librarians and lets users find and borrow books without waiting.
+
+•⁠  ⁠Perfect if a library wants to grow, automate, and stay organized now and in the future.
+
+•⁠  ⁠Library Lite is built for clarity, speed, and reliability—so that libraries of any size can modernize the way they work, serve more readers, and keep better track of every resource
