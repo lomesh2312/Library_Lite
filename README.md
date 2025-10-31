@@ -84,3 +84,9 @@ Manage user profiles and admin settings for added security and customization.
 •⁠  ⁠Perfect if a library wants to grow, automate, and stay organized now and in the future.
 
 •⁠  ⁠Library Lite is built for clarity, speed, and reliability—so that libraries of any size can modernize the way they work, serve more readers, and keep better track of every resource
+
+___
+
+⁠𝙀𝙍 𝘿𝙞𝙖𝙜𝙧𝙖𝙢 :
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/1597e014-3846-4b61-b430-21c097354fb2" />
