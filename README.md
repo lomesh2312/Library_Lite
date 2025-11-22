@@ -1,92 +1,264 @@
-📚 𝐋𝐢𝐛𝐫𝐚𝐫𝐲 𝐋𝐢𝐭𝐞 — 𝐅𝐮𝐥𝐥 𝐒𝐭𝐚𝐜𝐤 𝐋𝐢𝐛𝐫𝐚𝐫𝐲 𝐌𝐚𝐧𝐚𝐠𝐞𝐦𝐞𝐧𝐭 𝐒𝐲𝐬𝐭𝐞𝐦. 👇👇
+# 📚 Silent Pages — Novel Reader Dashboard
 
-Library Lite is a robust full stack web application designed to streamline library operations by providing digital solutions for managing books, authors, copies, loans, returns, and reporting. By automating repetitive tasks and improving data accessibility, Library Lite addresses the inefficiencies and inaccuracies of traditional, manual library management.
+A dark, mysterious Netflix-style web app for discovering and reading novels. Browse mystery thrillers like *Shatter Me*, *It Ends With Us*, and more with a sleek dark theme, interactive carousels, and immersive reading experience.
 
-🚩 𝗣𝗿𝗼𝗯𝗹𝗲𝗺 𝗟𝗶𝗯𝗿𝗮𝗿𝘆 𝗟𝗶𝘁𝗲 𝗦𝗼𝗹𝘃𝗲𝘀 👇👇
+## ✨ Key Features
 
-•⁠  ⁠Tracking books, copies, authors, and users by hand leads to errors, confusion, and wasted time.
+### Reader Dashboard
+- **Dark Mysterious Theme** — Deep purples, charcoal, and gold accents for a moody, immersive atmosphere.
+- **Netflix-Style Carousels** — Horizontally scrollable rows of books grouped by category.
+- **Featured Grid** — Top-rated books highlighted at the top.
+- **Search & Filter** — Find novels by title or author instantly.
+- **3D Hover Preview** — Tilt effect and animated overlay when hovering carousel items (500ms delay).
+- **Timed Text Preview** — Excerpts animate and optional audio snippets play during hover.
+- **Interactive Modal** — Click "Info" to see extended book details with actions (Open Reader / Add to My Books).
+- **Book Detail Page** — Full description, author bio, reviews, and ratings.
+- **Author Profiles** — Browse author info and all their novels.
 
-•⁠  ⁠Without a digital system, books often go missing, returns get delayed, and vital statistics like “most borrowed book” are impossible to know.
+### Backend API
+- **Book Management** — Fetch all books, get details, search, and filter by category.
+- **Author Management** — List all authors, view their bio and books.
+- **Review System** — Submit and view reader reviews with ratings (1-5 stars).
+- **Reading History** — Track which books users are currently reading, have completed, or abandoned.
+- **Authentication** — JWT-based user auth (login/register endpoints).
 
-•⁠  ⁠Libraries need a one-stop platform to automate inventory, loans, and reporting for smoother, smarter operations. 
+## 🛠 Tech Stack
 
-💡 𝐇𝐨𝐰 𝐋𝐢𝐛𝐫𝐚𝐫𝐲 𝐋𝐢𝐭𝐞 𝐅𝐢𝐱𝐞𝐬 𝐭𝐡𝐞 𝐏𝐫𝐨𝐛𝐥𝐞𝐦 👇👇
+**Frontend:**
+- React 19 with Vite
+- React Router for navigation
+- Custom CSS with dark theme variables
+- Responsive and accessible
 
-•⁠  ⁠Offers a centralized digital platform where every book, author, copy, and loan is tracked in real time.
+**Backend:**
+- Node.js + Express
+- Prisma ORM for database queries
+- SQLite (dev) / MySQL (production)
+- JWT for authentication
 
-•⁠  ⁠Automates issuing and returning books, giving instant updates on availability and due dates.
+**Database Schema:**
+- Users (with login/profile)
+- Authors (with bio and images)
+- Books (with ISBN, cover, description, ratings)
+- Reviews (user ratings and comments)
+- ReadingHistory (track reading progress)
+- Categories (organize books)
 
-•⁠  ⁠Generates powerful daily/weekly/monthly reports, showing what’s working and what needs attention.
+## 🚀 Quick Start
 
-•⁠  ⁠Ensures late fees and penalties are managed automatically, so nothing slips through the cracks.
+### Prerequisites
+- Node.js (v16+)
+- npm or yarn
 
-•⁠  ⁠Lets users and staff find any book instantly with a search bar that works by title, author, genre, or availability.
+### 1. Backend Setup
 
+```bash
+cd backend
+npm install
+npx prisma generate
+npx prisma migrate dev --name init
+npm run seed
+node index.js
+```
+
+The backend will start on `http://localhost:4000`.
+
+**What `npm run seed` does:**
+- Creates a demo SQLite database with 4 sample mystery novels
+- Adds 4 authors (Gillian Flynn, Stieg Larsson, Alex Michaelides, Dennis Lehane)
+- Adds sample reviews and reading history entries
+
+### 2. Frontend Setup
+
+In a new terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend will start on `http://localhost:5173` and automatically proxy API calls to the backend.
+
+### 3. Open the App
+
+Visit `http://localhost:5173` in your browser. You should see:
+- A dark hero section with search bar
+- Featured books grid
+- Horizontal carousels grouped by category
+
+## 📖 How to Use
+
+### Browsing Books
+1. **Search** — Type in the search bar to filter by title or author.
+2. **Hover Carousels** — Move over a book cover to see a preview overlay after ~500ms.
+3. **Tilt Effect** — The cover tilts toward your cursor (3D perspective).
+4. **Preview Text** — A short excerpt animates during the preview.
+
+### Book Details
+1. **Click "Read"** — Navigate to the full book detail page.
+2. **View Reviews** — See user ratings and comments.
+3. **Author Profile** — Click the author name to see their biography and other books.
+
+### Info Modal
+1. **Click "Info"** on any preview overlay.
+2. A modal opens with:
+   - Cover image
+   - Full title and author
+   - Complete description
+   - ISBN and average rating
+   - Action buttons (Open Reader / Add to My Books)
+3. **Close** with Escape key or click outside.
+
+## 🗂 Project Structure
+
+```
+Library_Lite/
+├── backend/
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   ├── bookController.js
+│   │   ├── authorController.js
+│   │   ├── reviewController.js
+│   │   └── readingHistoryController.js
+│   ├── routes/
+│   │   ├── auth.js
+│   │   ├── books.js
+│   │   ├── authors.js
+│   │   ├── reviews.js
+│   │   └── readingHistory.js
+│   ├── middleware/
+│   │   └── auth.js (JWT verification)
+│   ├── prisma/
+│   │   └── schema.prisma (database schema)
+│   ├── seed.js (demo data)
+│   ├── index.js (main server entry)
+│   ├── package.json
+│   └── .env (DATABASE_URL, JWT_SECRET)
+│
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   │   ├── TopNav.jsx (navigation bar)
+    │   │   ├── BookCard.jsx (compact and full variants with tilt)
+    │   │   ├── RowCarousel.jsx (horizontal scrollable rows)
+    │   │   └── Modal.jsx (accessible modal dialog)
+    │   ├── pages/
+    │   │   ├── Home.jsx (main dashboard)
+    │   │   ├── BookDetail.jsx (book info + reviews)
+    │   │   └── Author.jsx (author profile + books)
+    │   ├── styles/
+    │   │   └── theme.css (dark theme + animations)
+    │   ├── App.jsx (routing)
+    │   ├── main.jsx (entry point)
+    │   └── index.css
+    ├── vite.config.js (API proxy to backend)
+    └── package.json
+```
+
+## 🔗 API Endpoints
+
+### Books
+- `GET /api/books` — List all books (with pagination, search, filter)
+- `GET /api/books/:id` — Get book details with reviews
+- `POST /api/books` — Create book (admin)
+- `PUT /api/books/:id` — Update book (admin)
+
+### Authors
+- `GET /api/authors` — List all authors
+- `GET /api/authors/:id` — Get author profile with books
+- `POST /api/authors` — Create author (admin)
+- `PUT /api/authors/:id` — Update author (admin)
+
+### Reviews
+- `POST /api/reviews` — Submit a review (authenticated)
+- `GET /api/reviews/book/:bookId` — Get reviews for a book
+- `DELETE /api/reviews/:reviewId` — Delete review (user or admin)
+
+### Reading History
+- `POST /api/reading-history` — Add/update reading progress (authenticated)
+- `GET /api/reading-history/user/all` — Get user's reading history
+- `GET /api/reading-history/user/currently-reading` — Get books user is reading
+
+### Auth
+- `POST /api/auth/register` — Register new user
+- `POST /api/auth/login` — Login (returns JWT)
+- `GET /api/auth/exist` — Check if authenticated (requires JWT)
+
+## 🎨 Design Features
+
+### Dark Theme
+- Background: Deep charcoal (#0f0e13)
+- Accent: Purple (#a67be0)
+- Gold highlights: (#caa34a)
+- Text: Light lavender (#efe9f5)
+
+### Animations
+- **Hover Overlay** — Fades in after 500ms with smooth translate and scale.
+- **3D Tilt** — Cover tilts based on cursor position (max 8° rotation).
+- **Text Preview** — Excerpt animates upward over 6 seconds while overlay is visible.
+- **Smooth Transitions** — All interactions use cubic-bezier easing for fluid motion.
+
+### Accessibility
+- Keyboard navigation (Tab to focus, Enter/Space to activate, Escape to close).
+- ARIA labels on all interactive elements.
+- Focus-visible outlines for keyboard users.
+- Modal traps focus and manages body scroll.
+
+## 🐛 Troubleshooting
+
+### Frontend shows blank page
+- **Check backend is running:** `curl http://localhost:4000/api/books`
+- **Check browser console (F12):** Look for CORS or network errors.
+- **Vite proxy configured?** Make sure `vite.config.js` has the `/api` proxy pointing to `http://localhost:4000`.
+
+### Backend won't start
+- **DATABASE_URL not set?** Create `backend/.env` with:
+  ```
+  DATABASE_URL="file:./dev.db"
+  JWT_SECRET="dev-secret-key"
+  PORT=4000
+  ```
+- **Prisma client not generated?** Run `npx prisma generate`.
+- **Database migration failed?** Try `npx prisma migrate reset --force` (warning: clears data).
+
+### No books showing
+- **Seed didn't run?** Try `npm run seed` again.
+- **API returning empty?** Check `GET /api/books` response with `curl http://localhost:4000/api/books`.
+
+### 3D tilt not working
+- Hover overlay won't appear for 500ms—be patient!
+- Make sure you're hovering over the **compact carousel items**, not the featured grid.
+
+## 📝 Environment Variables
+
+### Backend (.env)
+```
+DATABASE_URL="file:./dev.db"
+JWT_SECRET="your-secret-key-here"
+PORT=4000
+```
+
+## 🎯 Future Enhancements
+
+- [ ] User authentication UI (login/signup pages)
+- [ ] "Continue Reading" strip on Home (shows user's reading list)
+- [ ] Infinite scroll on Home page
+- [ ] Reading progress indicators (pages read / total pages)
+- [ ] Social features (follow authors, share reviews)
+- [ ] Admin dashboard (manage books/authors/users)
+- [ ] Dark/Light theme toggle
+- [ ] Audio narration preview snippets
+- [ ] Bookshelf / wishlist management
+
+## 📄 License
+
+ISC
+
+## 👤 Author
+
+Created as a modern, dark-themed novel reader dashboard inspired by Netflix's UI/UX principles.
 
 ---
-✨ 𝐌𝐚𝐢𝐧 𝐅𝐞𝐚𝐭𝐮𝐫𝐞𝐬 👇👇
 
-•⁠  ⁠𝗕𝗼𝗼𝗸𝘀 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁:
-
-Add, edit, delete, and view books with all details. Keep genres, titles, and author links up-to-date and error-free.
-
-•⁠  𝗔𝘂𝘁𝗵𝗼𝗿𝘀 𝗠𝗮𝗻𝗮𝗴𝗲𝗺𝗲𝗻𝘁:
-
-Maintain a clean, searchable author directory. Authors can be added, edited, deleted, or quickly found from any connected book record.
-
-•⁠  ⁠𝗖𝗼𝗽𝗶𝗲𝘀 𝗛𝗮𝗻𝗱𝗹𝗶𝗻𝗴:
-
-Track multiple copies for any book. Know exactly how many copies exist, which are available, and which are out on loan.
-
-•⁠  ⁠𝗟𝗼𝗮𝗻 & 𝗥𝗲𝘁𝘂𝗿𝗻 𝗦𝘆𝘀𝘁𝗲𝗺:
-
-Issue books to users (staff/students), assign due dates, and record every return. Overdue books and late fees are flagged, and penalties computed as per policy, updating records automatically.
-
-•⁠  ⁠𝗗𝘂𝗲 𝗗𝗮𝘁𝗲𝘀 & 𝗣𝗲𝗻𝗮𝗹𝘁𝗶𝗲𝘀:
-
-Get reminded (and remind users) about upcoming due dates. Automatically track late returns and apply penalties, reducing manual work.
-
-•⁠  𝗦𝗲𝗮𝗿𝗰𝗵 𝗙𝘂𝗻𝗰𝘁𝗶𝗼𝗻:
-
-Find any book fast by searching title, author, genre, or availability. Never waste time looking through long lists or physical logs.
-
-•⁠  ⁠𝗥𝗲𝗽𝗼𝗿𝘁𝘀:
-
-Generate visual and tabular reports for book usage, overdue returns, and penalties. Reports can be daily, weekly, or monthly, giving a fast overview of library health and usage patterns.
-
-•⁠  ⁠𝗗𝗮𝘀𝗵𝗯𝗼𝗮𝗿𝗱:
-
-See at-a-glance metrics—total books, books on loan, overdue returns, and fast access to common actions.
-•⁠  ⁠𝗨𝘀𝗲𝗿/𝗔𝗱𝗺𝗶𝗻 𝗣𝗮𝗻𝗲𝗹:
-
-Manage user profiles and admin settings for added security and customization.
-
-
----
-🧱 𝐓𝐞𝐜𝐡 𝐒𝐭𝐚𝐜𝐤 👇👇
-
-•⁠  ⁠𝗙𝗿𝗼𝗻𝘁𝗲𝗻𝗱: React with React Router for smooth navigation, styled using TailwindCSS or Bootstrap, and Axios for making API requests.
-
-•⁠  ⁠𝗕𝗮𝗰𝗸𝗲𝗻𝗱: Node.js and Express for fast, scalable APIs, with Prisma simplifying safe and efficient access to a MySQL database.
-
-•⁠  𝗗𝗮𝘁𝗮𝗯𝗮𝘀𝗲: MySQL (managed through Prisma ORM).
-
-•⁠  𝗗𝗲𝘃 𝗧𝗼𝗼𝗹𝘀: Postman (API testing), VS Code, GitHub for tracking and collaboration
-
-
----
-🤨 𝐖𝐡𝐲 𝐋𝐢𝐛𝐫𝐚𝐫𝐲 𝐋𝐢𝐭𝐞?
-
-•⁠  ⁠Removes paperwork, brings real-time visibility, and keeps every transaction secure and logged.
-
-•⁠  ⁠Makes life easier for librarians and lets users find and borrow books without waiting.
-
-•⁠  ⁠Perfect if a library wants to grow, automate, and stay organized now and in the future.
-
-•⁠  ⁠Library Lite is built for clarity, speed, and reliability—so that libraries of any size can modernize the way they work, serve more readers, and keep better track of every resource
-
-___
-
-⁠𝙀𝙍 𝘿𝙞𝙖𝙜𝙧𝙖𝙢 :
-
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/1597e014-3846-4b61-b430-21c097354fb2" />
+**Enjoy discovering mystery novels in the dark! 🌙📖**
