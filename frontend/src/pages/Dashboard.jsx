@@ -13,22 +13,20 @@ const Dashboard = () => {
     });
     const [loading, setLoading] = useState(true);
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchStats();
-    },[]);
+    }, []);
 
     const fetchStats = async () => {
-        try{
+        try {
             const response = await axios.get('http://localhost:4000/api/dashboard/stats');
             setStats(response.data);
-        }catch(error){
-            
+        } catch (error) {
             console.error('Error fetching dashboard stats:', error);
-            
-        }finally{
-            setLoading(false)
+        } finally {
+            setLoading(false);
         }
-    }
+    };
 
     const StatCard = ({ title, value, icon: Icon, color, trend }) => (
         <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-md transition-all duration-200">

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Repeat, Plus, CheckCircle, AlertCircle } from 'lucide-react';
+import { Repeat, Plus, CheckCircle, AlertCircle, Trash2 } from 'lucide-react';
 
 const Loans = () => {
     const [loans, setLoans] = useState([]);
@@ -10,7 +10,7 @@ const Loans = () => {
 
 
     const [selectedBook, setSelectedBook] = useState('');
-    const [userId, setUserId] = useState('1'); 
+    const [userId, setUserId] = useState('1');
     const [dueDate, setDueDate] = useState('');
 
     useEffect(() => {
@@ -54,7 +54,7 @@ const Loans = () => {
             });
             setShowIssueModal(false);
             fetchLoans();
-            fetchBooks(); 
+            fetchBooks();
 
             setSelectedBook('');
             setDueDate('');
@@ -76,9 +76,22 @@ const Loans = () => {
         }
     };
 
+    const handleDeleteLoan = async (id) => {
+        if (!window.confirm('Are you sure you want to delete this loan record? This action cannot be undone.')) return;
+        try {
+            await axios.delete(`http://localhost:4000/api/loans/${id}`);
+            fetchLoans();
+            fetchBooks(); // Refresh books list in case available copies changed
+            alert('Loan deleted successfully');
+        } catch (error) {
+            console.error('Error deleting loan:', error);
+            alert(error.response?.data?.error || 'Failed to delete loan');
+        }
+    };
+
     return (
         <div className="space-y-6">
-            
+
             <div className="flex justify-between items-center">
                 <div>
                     <h1 className="text-2xl font-bold text-slate-800">Loans Management</h1>
@@ -93,7 +106,7 @@ const Loans = () => {
                 </button>
             </div>
 
-           
+
             <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
                 <div className="overflow-x-auto">
                     <table className="w-full text-left text-sm text-slate-600 dark:text-slate-400">
@@ -161,14 +174,23 @@ const Loans = () => {
                                                 )}
                                             </td>
                                             <td className="px-6 py-4 text-right">
-                                                {!loan.returned && (
+                                                <div className="flex justify-end items-center space-x-3">
+                                                    {!loan.returned && (
+                                                        <button
+                                                            onClick={() => handleReturnBook(loan.id)}
+                                                            className="text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-300 font-medium text-sm"
+                                                        >
+                                                            Return Book
+                                                        </button>
+                                                    )}
                                                     <button
-                                                        onClick={() => handleReturnBook(loan.id)}
-                                                        className="text-primary-600 hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-300 font-medium text-sm"
+                                                        onClick={() => handleDeleteLoan(loan.id)}
+                                                        className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 font-medium text-sm flex items-center"
+                                                        title="Delete loan record"
                                                     >
-                                                        Return Book
+                                                        <Trash2 className="w-4 h-4" />
                                                     </button>
-                                                )}
+                                                </div>
                                             </td>
                                         </tr>
                                     );
