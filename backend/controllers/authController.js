@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const register = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
+
     const hash = await bcrypt.hash(password, 10);
 
     const user = await prisma.user.create({
@@ -13,13 +14,19 @@ const register = async (req, res, next) => {
         email,
         passwordHash: hash,
         isAdmin: true,
+
       },
+
     });
 
     const existingAdmin = await prisma.admin.findUnique({
       where: { email_id: email },
+
     });
+
+
     let admin;
+
     if (!existingAdmin) {
       admin = await prisma.admin.create({
         data: {
@@ -28,7 +35,9 @@ const register = async (req, res, next) => {
           password: hash,
           profileUrl: null,
         },
+
       });
+
     } else {
       admin = existingAdmin;
     }
@@ -37,6 +46,7 @@ const register = async (req, res, next) => {
       { userId: admin.admin_id, isAdmin: true },
       process.env.JWT_SECRET || "secret",
       { expiresIn: "1h" }
+
     );
 
     res.json({
@@ -47,12 +57,17 @@ const register = async (req, res, next) => {
         email: admin.email_id,
         isAdmin: true,
         profileUrl: admin.profileUrl,
+
       },
+
     });
+
+
   } catch (e) {
     next(e);
   }
 };
+
 
 const login = async (req, res, next) => {
   try {
@@ -62,8 +77,10 @@ const login = async (req, res, next) => {
 
     if (!admin) {
       const user = await prisma.user.findUnique({ where: { email } });
+
       if (user) {
         const ok = await bcrypt.compare(password, user.passwordHash);
+
         if (ok) {
           admin = await prisma.admin.create({
             data: {
@@ -71,8 +88,12 @@ const login = async (req, res, next) => {
               email_id: user.email,
               password: user.passwordHash,
               profileUrl: null,
+
             },
+
           });
+
+
         } else {
           return res.status(401).json({ error: "Invalid credentials" });
         }
@@ -98,8 +119,11 @@ const login = async (req, res, next) => {
         email: admin.email_id,
         isAdmin: true,
         profileUrl: admin.profileUrl,
+
       },
+
     });
+    
   } catch (e) {
     next(e);
   }

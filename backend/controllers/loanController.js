@@ -7,6 +7,7 @@ exports.issueBook = async (req, res) => {
 
     const book = await prisma.book.findUnique({
       where: { id: parseInt(bookId) },
+
     });
 
     if (!book) {
@@ -23,18 +24,26 @@ exports.issueBook = async (req, res) => {
         bookId: parseInt(bookId),
         dueDate: new Date(dueDate),
       },
+
     });
+
 
     await prisma.book.update({
       where: { id: parseInt(bookId) },
+
       data: { availableCopies: { decrement: 1 } },
+
     });
 
     res.status(201).json(loan);
+
   } catch (error) {
     console.error("Error issuing book:", error);
+
     res.status(500).json({ error: "Failed to issue book" });
+
   }
+
 };
 
 exports.returnBook = async (req, res) => {
@@ -43,6 +52,7 @@ exports.returnBook = async (req, res) => {
 
     const loan = await prisma.loan.findUnique({
       where: { id: parseInt(id) },
+
     });
 
     if (!loan) {
@@ -58,20 +68,29 @@ exports.returnBook = async (req, res) => {
       data: {
         returned: true,
         returnedAt: new Date(),
+
       },
+
     });
 
     await prisma.book.update({
       where: { id: loan.bookId },
+
       data: { availableCopies: { increment: 1 } },
+
     });
 
     res.json(updatedLoan);
+
   } catch (error) {
     console.error("Error returning book:", error);
+
     res.status(500).json({ error: "Failed to return book" });
+
   }
+
 };
+
 
 exports.getLoans = async (req, res) => {
   try {
@@ -79,16 +98,25 @@ exports.getLoans = async (req, res) => {
       include: {
         book: true,
         user: true,
+
       },
       orderBy: {
         loanedAt: "desc",
+
       },
+
     });
+
+
     res.json(loans);
+
   } catch (error) {
     console.error("Error fetching loans:", error);
+
     res.status(500).json({ error: "Failed to fetch loans" });
+
   }
+
 };
 
 exports.deleteLoan = async (req, res) => {
@@ -97,6 +125,7 @@ exports.deleteLoan = async (req, res) => {
 
     const loan = await prisma.loan.findUnique({
       where: { id: parseInt(id) },
+
     });
 
     if (!loan) {
@@ -107,16 +136,24 @@ exports.deleteLoan = async (req, res) => {
       await prisma.book.update({
         where: { id: loan.bookId },
         data: { availableCopies: { increment: 1 } },
+
       });
+
     }
 
     await prisma.loan.delete({
       where: { id: parseInt(id) },
+
     });
 
     res.json({ message: "Loan deleted successfully" });
+
   } catch (error) {
     console.error("Error deleting loan:", error);
+
     res.status(500).json({ error: "Failed to delete loan" });
+
   }
+  
 };
+

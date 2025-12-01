@@ -25,6 +25,7 @@ async function main() {
                 name: name
             },
         });
+        
         console.log(`Admin user created/updated: ${admin.email_id}`);
 
     } catch (e) {

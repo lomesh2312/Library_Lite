@@ -26,10 +26,12 @@ app.use('/api/books', bookRoutes);
 app.use('/api/authors', authorRoutes);
 
 app.use('/api/loans', loanRoutes);
+
 app.use('/api/dashboard', require('./routes/dashboard'));
 
 app.use('/api/members', require('./routes/members'));
 app.use('/api/reports', require('./routes/reports'));
+
 app.use('/api/admins', require('./routes/admins'));
 
 const PORT = process.env.PORT || 4000;

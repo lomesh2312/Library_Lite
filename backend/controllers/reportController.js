@@ -16,16 +16,19 @@ exports.getReports = async (req, res) => {
     const users = await prisma.user.findMany({
       where: {
         membershipType: { not: null },
+
       },
       select: {
         name: true,
         membershipType: true,
         createdAt: true,
       },
+
     });
 
     users.forEach((user) => {
       const amount = MEMBERSHIP_PRICES[user.membershipType] || 0;
+
       if (amount > 0) {
         transactions.push({
           id: `mem-${user.name}-${user.createdAt}`,
@@ -34,9 +37,12 @@ exports.getReports = async (req, res) => {
           amount: amount,
           date: user.createdAt,
           type: "credit",
+
         });
+
         totalEarnings += amount;
       }
+
     });
 
     const loans = await prisma.loan.findMany({
@@ -44,19 +50,24 @@ exports.getReports = async (req, res) => {
         book: true,
         user: true,
       },
+
     });
 
     loans.forEach((loan) => {
       const bookPrice = loan.book.price || 0;
+
       if (bookPrice > 0) {
         transactions.push({
           id: `loan-${loan.id}`,
+
           source: "Book Issue",
           description: `${loan.book.title} (Issued to ${loan.user.name})`,
           amount: bookPrice,
           date: loan.loanedAt,
           type: "credit",
+
         });
+
         totalEarnings += bookPrice;
       }
 
@@ -64,7 +75,9 @@ exports.getReports = async (req, res) => {
       const dueDate = new Date(loan.dueDate);
 
       const loanDate = new Date(loan.loanedAt);
+
       const diffTime = Math.abs(returnDate - loanDate);
+
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
       if (diffDays > 7) {
@@ -74,12 +87,15 @@ exports.getReports = async (req, res) => {
         if (fineAmount > 0) {
           transactions.push({
             id: `fine-${loan.id}`,
+
             source: "Overdue Fine",
             description: `Overdue ${overdueDays} days - ${loan.book.title} (${loan.user.name})`,
             amount: fineAmount,
             date: returnDate,
             type: "credit",
+
           });
+
           totalEarnings += fineAmount;
         }
       }
@@ -91,8 +107,10 @@ exports.getReports = async (req, res) => {
       totalEarnings,
       transactions,
     });
+
   } catch (error) {
     console.error("Error generating reports:", error);
+    
     res.status(500).json({ error: "Failed to generate reports" });
   }
 };
