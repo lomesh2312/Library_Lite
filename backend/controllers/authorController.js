@@ -7,17 +7,25 @@ exports.getAuthors = async (req, res) => {
       include: {
         _count: {
           select: { books: true },
+
         },
       },
+
       orderBy: {
         name: "asc",
       },
+
     });
+
+
     res.json(authors);
+
   } catch (error) {
     console.error("Error fetching authors:", error);
     res.status(500).json({ error: "Failed to fetch authors" });
+
   }
+
 };
 
 exports.getAuthorById = async (req, res) => {
@@ -27,7 +35,9 @@ exports.getAuthorById = async (req, res) => {
       where: { id: parseInt(id) },
       include: {
         books: true,
+
       },
+
     });
 
     if (!author) {
@@ -35,8 +45,11 @@ exports.getAuthorById = async (req, res) => {
     }
 
     res.json(author);
+
+
   } catch (error) {
     console.error("Error fetching author:", error);
+
     res.status(500).json({ error: "Failed to fetch author" });
   }
 };
@@ -44,17 +57,26 @@ exports.getAuthorById = async (req, res) => {
 exports.createAuthor = async (req, res) => {
   try {
     const { name, profileUrl } = req.body;
+
     const author = await prisma.author.create({
       data: {
         name,
         profileUrl,
+
       },
+
     });
+
+
     res.status(201).json(author);
+
   } catch (error) {
     console.error("Error creating author:", error);
+
     res.status(500).json({ error: "Failed to create author" });
+
   }
+
 };
 
 exports.deleteAuthor = async (req, res) => {
@@ -62,12 +84,18 @@ exports.deleteAuthor = async (req, res) => {
     const { id } = req.params;
     await prisma.author.delete({
       where: { id: parseInt(id) },
+
+
     });
+
     res.json({ message: "Author deleted successfully" });
+
   } catch (error) {
     console.error("Error deleting author:", error);
+
     res.status(500).json({ error: "Failed to delete author" });
   }
+
 };
 
 exports.updateAuthor = async (req, res) => {
@@ -82,9 +110,11 @@ exports.updateAuthor = async (req, res) => {
     const author = await prisma.author.update({
       where: { id: parseInt(id) },
       data: dataToUpdate,
+
     });
 
     res.json(author);
+    
   } catch (error) {
     console.error("Error updating author:", error);
     res.status(500).json({ error: "Failed to update author" });
