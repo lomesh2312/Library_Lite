@@ -1,0 +1,10 @@
+{"totalBooks":51,"activeLoans":1,"overdueLoans":0,
+"totalMembers":2,"totalEarnings":800,
+"recentActivity":[{"id":4,"userId":2,"bookId":52,"loanedAt":"2025-11-23T07:55:28.741Z","dueDate":"2025-11-23T00:00:00.000Z","returnedAt":null,"returned":false,
+"user":{"id":2,"name":"manik","email":"manik@matu.com","passwordHash":"$2b$10$P2WaSUUP4W2cqKtCWhk5yOPuCqykcLnsLOn/j8GxyQ/G6OSPIvE.K","isAdmin":false,"createdAt":"2025-11-23T07:48:14.330Z",
+"membershipType":"MONTH_1","membershipExpiry":"2025-12-23T07:48:14.246Z"}
+,"book":{"id":52,"title":"The 48 Laws of Power","isbn":"0140280197","coverUrl":"https://m.media-amazon.com/images/I/61J3Uu4jOLL.jpg","description":"","totalCopies":5,"availableCopies":4,"price":200,"authorId":12,"categoryId":1}},
+{"id":3,"userId":1,"bookId":11,"loanedAt":"2025-11-23T07:51:10.420Z","dueDate":"2025-11-23T00:00:00.000Z","returnedAt":"2025-11-23T07:52:01.488Z","returned":true,
+
+"user":{"id":1,"name":"Test Member","email":"test_curl@example.com","passwordHash":"$2b$10$RxDdKuUVMP8nO22vGHv5tezIHWFskXpOGK0jkpwGi.Vk22YHfk.UO","isAdmin":false,"createdAt":"2025-11-23T07:45:33.299Z","membershipType":"MONTH_1","membershipExpiry":"2025-12-23T07:45:33.236Z"},"book":{"id":11,"title":"1984","isbn":"ISBN-4-3987","coverUrl":"https://placehold.co/400x600?text=1984",
+"description":"A classic book by George Orwell","totalCopies":5,"availableCopies":5,"price":200,"authorId":3,"categoryId":1}}],"graphData":{"labels":["Mon","Tue","Wed","Thu","Fri","Sat","Sun"],"data":[0,0,0,0,0,0,800]}}
