@@ -4,9 +4,9 @@ const bcrypt = require('bcrypt');
 
 exports.createMember = async (req, res) => {
     try {
-        const { name, email, duration } = req.body; // duration: 'MONTH_1', 'MONTH_3', 'MONTH_6', 'YEAR_1'
+        const { name, email, duration } = req.body; 
 
-        // Calculate expiry date
+
         let expiryDate = new Date();
         switch (duration) {
             case 'MONTH_1':
@@ -25,7 +25,7 @@ exports.createMember = async (req, res) => {
                 return res.status(400).json({ error: 'Invalid duration' });
         }
 
-        // Create user with default password 'password123'
+
         const hashedPassword = await bcrypt.hash('password123', 10);
 
         const user = await prisma.user.create({
@@ -69,7 +69,7 @@ exports.deleteMember = async (req, res) => {
     try {
         const { id } = req.params;
 
-        // Check if member has active loans
+
         const activeLoans = await prisma.loan.findMany({
             where: {
                 userId: parseInt(id),
@@ -83,12 +83,12 @@ exports.deleteMember = async (req, res) => {
             });
         }
 
-        // Delete all returned loans for this member first
+
         await prisma.loan.deleteMany({
             where: { userId: parseInt(id) }
         });
 
-        // Delete the member
+
         await prisma.user.delete({
             where: { id: parseInt(id) }
         });

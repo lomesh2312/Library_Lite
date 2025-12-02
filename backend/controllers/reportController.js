@@ -13,7 +13,7 @@ exports.getReports = async (req, res) => {
         const transactions = [];
         let totalEarnings = 0;
 
-        // 1. Membership Earnings
+
         const users = await prisma.user.findMany({
             where: {
                 membershipType: { not: null }
@@ -40,7 +40,7 @@ exports.getReports = async (req, res) => {
             }
         });
 
-        // 2. Book Issue Earnings & Overdue Fines
+
         const loans = await prisma.loan.findMany({
             include: {
                 book: true,
@@ -49,7 +49,7 @@ exports.getReports = async (req, res) => {
         });
 
         loans.forEach(loan => {
-            // A. Book Issue Revenue (Price of the book)
+
             const bookPrice = loan.book.price || 0;
             if (bookPrice > 0) {
                 transactions.push({
@@ -63,17 +63,11 @@ exports.getReports = async (req, res) => {
                 totalEarnings += bookPrice;
             }
 
-            // B. Overdue Fines
-            // Calculate overdue days
+
             const returnDate = loan.returned ? new Date(loan.returnedAt) : new Date();
             const dueDate = new Date(loan.dueDate);
 
-            // Normalize dates to ignore time component for fairer calculation (optional, but good for "days")
-            // or just stick to strict timestamp comparison. 
-            // User said: "if the book is not returned in the interval of 7 days".
-            // Let's stick to the timestamp comparison but ensure we don't charge for the 7th day itself if returned late in the day?
-            // Actually, usually due date is set to end of day or specific time. 
-            // Let's keep strict comparison but ensure logic is clear.
+
 
             const loanDate = new Date(loan.loanedAt);
             const diffTime = Math.abs(returnDate - loanDate);
@@ -97,7 +91,7 @@ exports.getReports = async (req, res) => {
             }
         });
 
-        // Sort transactions by date descending
+
         transactions.sort((a, b) => new Date(b.date) - new Date(a.date));
 
         res.json({

@@ -4,6 +4,7 @@ const { createMember, getMembers, deleteMember } = require('../controllers/membe
 
 router.post('/', createMember);
 router.get('/', getMembers);
+
 router.delete('/:id', deleteMember);
 
 module.exports = router;

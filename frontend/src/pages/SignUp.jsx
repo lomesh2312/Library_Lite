@@ -14,9 +14,7 @@ const SignUp = () => {
     const handleSignUp = async (e) => {
         e.preventDefault();
         setError('');
-
         setLoading(true);
-        
         try {
             const response = await axios.post('/api/auth/register', {
                 name,
@@ -24,11 +22,11 @@ const SignUp = () => {
                 password
             });
 
-            // Auto-login: Store token and user data
+
             localStorage.setItem('token', response.data.accessToken);
             localStorage.setItem('user', JSON.stringify(response.data.user));
 
-            // Redirect to dashboard instead of login page
+
             navigate('/');
         } catch (err) {
             setError(err.response?.data?.error || 'Sign up failed');

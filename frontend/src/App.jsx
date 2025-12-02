@@ -12,7 +12,6 @@ import SignUp from './pages/SignUp';
 import Settings from './pages/Settings';
 import OAuthCallback from './pages/OAuthCallback';
 
-
 function App() {
   return (
     <Router>
@@ -32,8 +31,6 @@ function App() {
       </Routes>
     </Router>
   );
-
 }
-
 
 export default App;

@@ -43,12 +43,14 @@ const TopBar = () => {
                     localStorage.setItem('user', JSON.stringify(updatedUser));
                     setNewProfileUrl(currentUser.profileUrl || '');
                 }
+
             } catch (e) {
                 console.error("Failed to refresh profile", e);
             }
         };
 
         refreshProfile();
+        
     }, []);
 
     const handleUpdateProfile = async (e) => {

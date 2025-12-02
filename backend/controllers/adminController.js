@@ -98,6 +98,7 @@ exports.updateAdmin = async (req, res) => {
                 profileUrl: updatedAdmin.profileUrl
             }
         });
+        
     } catch (error) {
         console.error('Error updating admin:', error);
         res.status(500).json({ error: 'Failed to update admin' });

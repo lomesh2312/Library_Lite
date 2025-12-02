@@ -17,7 +17,7 @@ passport.deserializeUser(async (id, done) => {
     }
 });
 
-
+// Helper to sync User with Admin
 const syncAdmin = async (user, profileUrl) => {
     try {
         const existingAdmin = await prisma.admin.findUnique({ where: { email_id: user.email } });
@@ -26,12 +26,12 @@ const syncAdmin = async (user, profileUrl) => {
                 data: {
                     name: user.name,
                     email_id: user.email,
-                    password: user.passwordHash || 'oauth_user', 
+                    password: user.passwordHash || 'oauth_user', // Placeholder for OAuth users
                     profileUrl: profileUrl
                 }
             });
         } else {
-
+            // Update profile URL if it's missing or changed (optional, but good for keeping in sync)
             if (profileUrl && existingAdmin.profileUrl !== profileUrl) {
                 await prisma.admin.update({
                     where: { email_id: user.email },
@@ -60,7 +60,7 @@ if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
                         data: {
                             name: profile.displayName,
                             email: email,
-                            passwordHash: 'oauth_google', 
+                            passwordHash: 'oauth_google', // No password for OAuth
                             isAdmin: true
                         }
                     });
@@ -84,7 +84,7 @@ if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
     },
         async (accessToken, refreshToken, profile, done) => {
             try {
-                const email = profile.emails?.[0]?.value || `${profile.username}@github.com`; 
+                const email = profile.emails?.[0]?.value || `${profile.username}@github.com`; // Fallback if email is private
                 let user = await prisma.user.findUnique({ where: { email } });
 
                 if (!user) {

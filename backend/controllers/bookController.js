@@ -113,6 +113,7 @@ exports.updateBook = async (req, res) => {
         });
 
         res.json(book);
+        
     } catch (error) {
         console.error('Error updating book:', error);
         res.status(500).json({ error: 'Failed to update book' });
@@ -122,10 +123,13 @@ exports.updateBook = async (req, res) => {
 exports.deleteBook = async (req, res) => {
     try {
         const { id } = req.params;
+
         await prisma.book.delete({
             where: { id: parseInt(id) }
         });
+
         res.json({ message: 'Book deleted successfully' });
+
     } catch (error) {
         console.error('Error deleting book:', error);
         if (error.code === 'P2003') {

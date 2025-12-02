@@ -17,6 +17,7 @@ router.get('/exist', auth, exist)
 router.get('/github', passport.authenticate('github', { scope: ['user:email'] }));
 
 router.get('/github/callback',
+    
     passport.authenticate('github', { failureRedirect: '/login', session: false }),
     (req, res) => {
 
