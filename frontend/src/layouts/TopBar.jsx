@@ -11,7 +11,6 @@ const TopBar = () => {
     const [loading, setLoading] = useState(false);
 
 
-
     useEffect(() => {
         const refreshProfile = async () => {
             const token = localStorage.getItem('token');
@@ -20,7 +19,6 @@ const TopBar = () => {
             if (!token || !storedUser.id) return;
 
             try {
-
 
                 const res = await axios.get('/api/admins', {
                     headers: { Authorization: `Bearer ${token}` }
@@ -81,9 +79,9 @@ const TopBar = () => {
     return (
         <>
             <header className="h-16 bg-white dark:bg-slate-850 border-b border-gray-200 dark:border-slate-700 flex items-center justify-end px-6 sticky top-0 z-10 transition-colors duration-200">
-
+                {/* Right Actions */}
                 <div className="flex items-center space-x-4 ml-4">
-
+                    {/* Theme Toggle */}
                     <button
                         onClick={toggleTheme}
                         className="p-2 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-slate-700 rounded-full transition-colors"
@@ -91,7 +89,7 @@ const TopBar = () => {
                         {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                     </button>
 
-
+                    {/* Admin Profile Trigger */}
                     <div
                         className="flex items-center pl-4 cursor-pointer hover:opacity-80 transition-opacity"
                         onClick={() => setShowProfileModal(true)}
@@ -115,7 +113,7 @@ const TopBar = () => {
                 </div>
             </header>
 
-
+            {/* Profile Modal */}
             {showProfileModal && (
                 <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
                     <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl max-w-md w-full p-6 animate-in fade-in zoom-in duration-200">

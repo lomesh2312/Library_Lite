@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 const prisma = new PrismaClient();
 
 async function main() {
-
     const email = 'admin@library.com';
     const password = 'admin123';
     const name = 'Admin User';
@@ -12,7 +11,6 @@ async function main() {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     try {
-
         const admin = await prisma.admin.upsert({
             where: { email_id: email },
             update: {
@@ -25,14 +23,10 @@ async function main() {
                 name: name
             },
         });
-        
         console.log(`Admin user created/updated: ${admin.email_id}`);
-
     } catch (e) {
-
         console.error('Error creating admin:', e);
     } finally {
-        
         await prisma.$disconnect();
     }
 }

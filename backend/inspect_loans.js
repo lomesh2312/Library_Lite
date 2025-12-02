@@ -2,7 +2,6 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function inspect() {
-
     console.log('Inspecting Loans...');
     const loans = await prisma.loan.findMany({
         where: { returned: false },
@@ -10,16 +9,13 @@ async function inspect() {
     });
 
     const now = new Date();
-
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
 
     console.log('Current Time:', now.toISOString());
-
     console.log('7 Days Ago:', sevenDaysAgo.toISOString());
 
     loans.forEach(loan => {
-        
         const isOverdueBackend = loan.loanedAt < sevenDaysAgo;
         console.log(`Loan ID: ${loan.id}`);
         console.log(`  User: ${loan.user.name}`);

@@ -24,12 +24,13 @@ const Sidebar = () => {
 
     return (
         <aside className="w-64 bg-white dark:bg-slate-900 border-r border-gray-200 dark:border-slate-700 h-screen fixed left-0 top-0 flex flex-col z-10 hidden md:flex transition-colors duration-200">
+            {/* Logo */}
             <div className="h-16 flex items-center px-6 border-b border-gray-100 dark:border-slate-800">
                 <Library className="w-8 h-8 text-black dark:text-white mr-3" />
                 <span className="text-xl font-bold text-gray-900 dark:text-white">Library Lite</span>
             </div>
 
-
+            {/* Navigation */}
             <nav className="flex-1 py-6 px-3 space-y-1 overflow-y-auto">
                 {navItems.map((item) => (
                     <NavLink
@@ -50,7 +51,7 @@ const Sidebar = () => {
                 ))}
             </nav>
 
-
+            {/* Footer / Settings */}
             <div className="p-4 border-t border-gray-100 dark:border-slate-800">
                 <NavLink
                     to="/settings"

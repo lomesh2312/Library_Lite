@@ -30,7 +30,6 @@ passport.use(new GitHubStrategy({
     scope: ['user:email']
 },
     async function (accessToken, refreshToken, profile, done) {
-
         try {
             const email = profile.emails?.[0]?.value || `${profile.username}@github.com`; 
             const name = profile.displayName || profile.username;
@@ -39,9 +38,7 @@ passport.use(new GitHubStrategy({
 
             let admin = await prisma.admin.findUnique({ where: { email_id: email } });
 
-
             if (!admin) {
-
 
                 let user = await prisma.user.findUnique({ where: { email } });
 
@@ -53,10 +50,8 @@ passport.use(new GitHubStrategy({
                             email,
                             passwordHash: 'oauth_user',
                             isAdmin: true
-
                         }
                     });
-
                 }
 
 
@@ -67,10 +62,7 @@ passport.use(new GitHubStrategy({
                         password: 'oauth_user',
                         profileUrl: profileUrl
                     }
-
                 });
-
-
             } else {
 
                 if (!admin.profileUrl && profileUrl) {
@@ -82,13 +74,10 @@ passport.use(new GitHubStrategy({
             }
 
             return done(null, admin);
-
         } catch (err) {
             return done(err, null);
-
         }
     }
-    
 ));
 
 module.exports = passport;

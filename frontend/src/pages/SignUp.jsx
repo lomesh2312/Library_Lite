@@ -14,7 +14,9 @@ const SignUp = () => {
     const handleSignUp = async (e) => {
         e.preventDefault();
         setError('');
+
         setLoading(true);
+        
         try {
             const response = await axios.post('/api/auth/register', {
                 name,
