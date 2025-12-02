@@ -19,7 +19,7 @@ const Authors = () => {
     const fetchAuthors = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('http://localhost:4000/api/authors');
+            const response = await axios.get('https://library-lite.onrender.com/api/authors');
             setAuthors(response.data);
         } catch (error) {
             console.error('Error fetching authors:', error);
@@ -30,7 +30,7 @@ const Authors = () => {
 
     const fetchAuthorDetails = async (id) => {
         try {
-            const response = await axios.get(`http://localhost:4000/api/authors/${id}`);
+            const response = await axios.get(`https://library-lite.onrender.com/api/authors/${id}`);
             setSelectedAuthor(response.data);
         } catch (error) {
             console.error('Error fetching author details:', error);
@@ -42,7 +42,7 @@ const Authors = () => {
         if (!window.confirm('Are you sure you want to delete this author? This action cannot be undone.')) return;
 
         try {
-            await axios.delete(`http://localhost:4000/api/authors/${id}`);
+            await axios.delete(`https://library-lite.onrender.com/api/authors/${id}`);
             setAuthors(authors.filter(author => author.id !== id));
             if (selectedAuthor && selectedAuthor.id === id) {
                 setSelectedAuthor(null);
@@ -71,7 +71,7 @@ const Authors = () => {
     const handleUpdateAuthor = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:4000/api/authors/${selectedAuthor.id}`, editFormData);
+            await axios.put(`https://library-lite.onrender.com/api/authors/${selectedAuthor.id}`, editFormData);
             setIsEditing(false);
             setSelectedAuthor(null);
             fetchAuthors();
@@ -84,7 +84,7 @@ const Authors = () => {
     const handleAddAuthor = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:4000/api/authors', addFormData);
+            await axios.post('https://library-lite.onrender.com/api/authors', addFormData);
             setShowAddModal(false);
             setAddFormData({ name: '', profileUrl: '' });
             fetchAuthors();

@@ -15,7 +15,7 @@ const Reports = () => {
 
     const fetchReports = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/reports');
+            const response = await axios.get('https://library-lite.onrender.com/api/reports');
             setReports(response.data);
         } catch (error) {
             console.error('Error fetching reports:', error);

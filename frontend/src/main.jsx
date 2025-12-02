@@ -5,7 +5,7 @@ import App from './App.jsx'
 import axios from 'axios';
 
 // Set default base URL
-axios.defaults.baseURL = 'http://localhost:4000';
+axios.defaults.baseURL = 'https://library-lite.onrender.com/';
 
 
 axios.interceptors.request.use(

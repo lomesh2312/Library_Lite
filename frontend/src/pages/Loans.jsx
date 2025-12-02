@@ -21,7 +21,7 @@ const Loans = () => {
     const fetchLoans = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('http://localhost:4000/api/loans');
+            const response = await axios.get('https://library-lite.onrender.com/api/loans');
             setLoans(response.data);
         } catch (error) {
             console.error('Error fetching loans:', error);
@@ -32,7 +32,7 @@ const Loans = () => {
 
     const fetchBooks = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/books');
+            const response = await axios.get('https://library-lite.onrender.com/api/books');
             setBooks(response.data.filter(b => b.availableCopies > 0));
         } catch (error) {
             console.error('Error fetching books:', error);
@@ -47,7 +47,7 @@ const Loans = () => {
             const defaultDueDate = new Date(issueDate);
             defaultDueDate.setDate(defaultDueDate.getDate() + 7);
 
-            await axios.post('http://localhost:4000/api/loans', {
+            await axios.post('https://library-lite.onrender.com/api/loans', {
                 userId,
                 bookId: selectedBook,
                 dueDate: dueDate || defaultDueDate.toISOString().split('T')[0]
@@ -67,7 +67,7 @@ const Loans = () => {
     const handleReturnBook = async (id) => {
         if (!window.confirm('Are you sure you want to return this book?')) return;
         try {
-            await axios.put(`http://localhost:4000/api/loans/${id}/return`);
+            await axios.put(`https://library-lite.onrender.com/api/loans/${id}/return`);
             fetchLoans();
             fetchBooks();
         } catch (error) {
@@ -79,7 +79,7 @@ const Loans = () => {
     const handleDeleteLoan = async (id) => {
         if (!window.confirm('Are you sure you want to delete this loan record? This action cannot be undone.')) return;
         try {
-            await axios.delete(`http://localhost:4000/api/loans/${id}`);
+            await axios.delete(`https://library-lite.onrender.com/api/loans/${id}`);
             fetchLoans();
             fetchBooks(); // Refresh books list in case available copies changed
             alert('Loan deleted successfully');

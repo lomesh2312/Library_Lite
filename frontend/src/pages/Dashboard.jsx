@@ -19,7 +19,7 @@ const Dashboard = () => {
 
     const fetchStats = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/dashboard/stats');
+            const response = await axios.get('https://library-lite.onrender.com/api/dashboard/stats');
             setStats(response.data);
         } catch (error) {
             console.error('Error fetching dashboard stats:', error);

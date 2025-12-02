@@ -17,11 +17,10 @@ const Members = () => {
     useEffect(() => {
         fetchMembers();
     }, []);
-
     const fetchMembers = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('http://localhost:4000/api/members');
+            const response = await axios.get('https://library-lite.onrender.com/api/members');
             setMembers(response.data);
         } catch (error) {
             console.error('Error fetching members:', error);
@@ -33,7 +32,7 @@ const Members = () => {
     const handleAddMember = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:4000/api/members', formData);
+            await axios.post('https://library-lite.onrender.com/api/members', formData);
             setShowAddModal(false);
             fetchMembers();
             setFormData({ name: '', email: '', duration: 'MONTH_1' });
@@ -56,7 +55,7 @@ const Members = () => {
     const handleDeleteMember = async (id) => {
         if (!window.confirm('Are you sure you want to delete this member? This will also delete their loan history.')) return;
         try {
-            await axios.delete(`http://localhost:4000/api/members/${id}`);
+            await axios.delete(`https://library-lite.onrender.com/api/members/${id}`);
             fetchMembers();
             alert('Member deleted successfully');
         } catch (error) {

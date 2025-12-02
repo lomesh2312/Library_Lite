@@ -36,7 +36,7 @@ const SignUp = () => {
     };
 
     const handleGithubSignUp = () => {
-        window.location.href = 'http://localhost:4000/api/auth/github';
+        window.location.href = 'https://library-lite.onrender.com/api/auth/github';
     };
 
     return (

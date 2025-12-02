@@ -36,7 +36,7 @@ const Books = () => {
     const fetchBooks = async (search = '') => {
         try {
             setLoading(true);
-            const response = await axios.get(`http://localhost:4000/api/books?search=${search}`);
+            const response = await axios.get(`https://library-lite.onrender.com/api/books?search=${search}`);
             setBooks(response.data);
         } catch (error) {
             console.error('Error fetching books:', error);
@@ -56,7 +56,7 @@ const Books = () => {
     const handleAddBook = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:4000/api/books', formData);
+            await axios.post('https://library-lite.onrender.com/api/books', formData);
             setShowAddModal(false);
             fetchBooks();
             setFormData({
@@ -77,7 +77,7 @@ const Books = () => {
     const handleDeleteBook = async (id) => {
         if (!window.confirm('Are you sure you want to delete this book? This action cannot be undone.')) return;
         try {
-            await axios.delete(`http://localhost:4000/api/books/${id}`);
+            await axios.delete(`https://library-lite.onrender.com/api/books/${id}`);
             fetchBooks();
         } catch (error) {
             console.error('Error deleting book:', error);
@@ -92,7 +92,7 @@ const Books = () => {
 
 
         try {
-            const response = await axios.get(`http://localhost:4000/api/books/${book.id}`);
+            const response = await axios.get(`https://library-lite.onrender.com/api/books/${book.id}`);
             setSelectedBook(response.data);
             setEditFormData({
                 price: response.data.price || '',
@@ -113,12 +113,12 @@ const Books = () => {
                 coverUrl: editFormData.coverUrl
             };
 
-            await axios.put(`http://localhost:4000/api/books/${selectedBook.id}`, dataToSend);
+            await axios.put(`https://library-lite.onrender.com/api/books/${selectedBook.id}`, dataToSend);
             setIsEditing(false);
 
             fetchBooks();
 
-            const response = await axios.get(`http://localhost:4000/api/books/${selectedBook.id}`);
+            const response = await axios.get(`https://library-lite.onrender.com/api/books/${selectedBook.id}`);
             setSelectedBook(response.data);
         } catch (error) {
             console.error('Error updating book:', error);
