@@ -1,7 +1,7 @@
 const http = require('http');
 
 function checkDashboard() {
-    http.get('http://localhost:4000/api/dashboard/stats', (res) => {
+    http.get('https://library-lite.onrender.com/api/dashboard/stats', (res) => {
         let data = '';
         res.on('data', (chunk) => {
             data += chunk;

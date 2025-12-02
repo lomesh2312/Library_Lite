@@ -37,7 +37,7 @@ exports.addAdmin = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const profileUrl = req.file ? `http://localhost:4000/uploads/${req.file.filename}` : (req.body.profileUrl || null);
+        const profileUrl = req.file ? `https://library-lite.onrender.com/uploads/${req.file.filename}` : (req.body.profileUrl || null);
 
         const newAdmin = await prisma.admin.create({
             data: {
@@ -81,7 +81,7 @@ exports.updateAdmin = async (req, res) => {
         let { profileUrl } = req.body;
 
         if (req.file) {
-            profileUrl = `http://localhost:4000/uploads/${req.file.filename}`;
+            profileUrl = `https://library-lite.onrender.com/uploads/${req.file.filename}`;
         }
 
         const updatedAdmin = await prisma.admin.update({
