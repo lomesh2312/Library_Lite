@@ -26,7 +26,7 @@ passport.deserializeUser(async (id, done) => {
 passport.use(new GitHubStrategy({
     clientID: process.env.GITHUB_CLIENT_ID || 'PLACEHOLDER_CLIENT_ID',
     clientSecret: process.env.GITHUB_CLIENT_SECRET || 'PLACEHOLDER_CLIENT_SECRET',
-    callbackURL: "/api/auth/github/callback",
+    callbackURL: "https://library-lite.onrender.com/api/auth/github/callback",
     scope: ['user:email']
 },
     async function (accessToken, refreshToken, profile, done) {
