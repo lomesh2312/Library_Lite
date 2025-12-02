@@ -9,11 +9,14 @@ exports.getAuthors = async (req, res) => {
                     select: { books: true }
                 }
             },
+
             orderBy: {
                 name: 'asc',
             }
         });
+
         res.json(authors);
+        
     } catch (error) {
         console.error('Error fetching authors:', error);
         res.status(500).json({ error: 'Failed to fetch authors' });

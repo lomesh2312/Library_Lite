@@ -8,10 +8,12 @@ const MainLayout = () => {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
+
         if (!token) {
             navigate('/login');
         }
     }, [navigate]);
+
     return (
         <div className="flex h-screen bg-slate-50 overflow-hidden">
             <Sidebar />
@@ -28,5 +30,6 @@ const MainLayout = () => {
         </div>
     );
 };
+
 
 export default MainLayout;

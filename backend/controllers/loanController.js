@@ -5,7 +5,7 @@ exports.issueBook = async (req, res) => {
     try {
         const { userId, bookId, dueDate } = req.body;
 
-        // Check if book is available
+
         const book = await prisma.book.findUnique({
             where: { id: parseInt(bookId) }
         });
@@ -18,7 +18,7 @@ exports.issueBook = async (req, res) => {
             return res.status(400).json({ error: 'Book is not available' });
         }
 
-        // Create loan
+
         const loan = await prisma.loan.create({
             data: {
                 userId: parseInt(userId),
@@ -27,7 +27,7 @@ exports.issueBook = async (req, res) => {
             }
         });
 
-        // Decrement available copies
+
         await prisma.book.update({
             where: { id: parseInt(bookId) },
             data: { availableCopies: { decrement: 1 } }
@@ -56,7 +56,7 @@ exports.returnBook = async (req, res) => {
             return res.status(400).json({ error: 'Book already returned' });
         }
 
-        // Mark as returned
+
         const updatedLoan = await prisma.loan.update({
             where: { id: parseInt(id) },
             data: {
@@ -65,7 +65,7 @@ exports.returnBook = async (req, res) => {
             }
         });
 
-        // Increment available copies
+
         await prisma.book.update({
             where: { id: loan.bookId },
             data: { availableCopies: { increment: 1 } }
@@ -90,6 +90,7 @@ exports.getLoans = async (req, res) => {
             }
         });
         res.json(loans);
+
     } catch (error) {
         console.error('Error fetching loans:', error);
         res.status(500).json({ error: 'Failed to fetch loans' });
@@ -108,7 +109,7 @@ exports.deleteLoan = async (req, res) => {
             return res.status(404).json({ error: 'Loan not found' });
         }
 
-        // If the loan was active (not returned), restore the book's available copies
+
         if (!loan.returned) {
             await prisma.book.update({
                 where: { id: loan.bookId },
@@ -116,7 +117,7 @@ exports.deleteLoan = async (req, res) => {
             });
         }
 
-        // Delete the loan
+
         await prisma.loan.delete({
             where: { id: parseInt(id) }
         });

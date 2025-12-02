@@ -31,19 +31,19 @@ passport.use(new GitHubStrategy({
 },
     async function (accessToken, refreshToken, profile, done) {
         try {
-            const email = profile.emails?.[0]?.value || `${profile.username}@github.com`; 
+            const email = profile.emails?.[0]?.value || `${profile.username}@github.com`; // Fallback if email is private
             const name = profile.displayName || profile.username;
             const profileUrl = profile.photos?.[0]?.value;
 
-
+            // Check if Admin exists
             let admin = await prisma.admin.findUnique({ where: { email_id: email } });
 
             if (!admin) {
-
+                // Check if User exists
                 let user = await prisma.user.findUnique({ where: { email } });
 
                 if (!user) {
-
+                    // Create User
                     user = await prisma.user.create({
                         data: {
                             name,
@@ -54,7 +54,7 @@ passport.use(new GitHubStrategy({
                     });
                 }
 
-
+                // Create Admin (Sync)
                 admin = await prisma.admin.create({
                     data: {
                         name,
@@ -64,7 +64,7 @@ passport.use(new GitHubStrategy({
                     }
                 });
             } else {
-
+                // Update profile URL if missing
                 if (!admin.profileUrl && profileUrl) {
                     admin = await prisma.admin.update({
                         where: { admin_id: admin.admin_id },

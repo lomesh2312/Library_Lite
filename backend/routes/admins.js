@@ -4,8 +4,10 @@ const { getAdmins, addAdmin, deleteAdmin, updateAdmin } = require('../controller
 const upload = require('../middleware/upload');
 
 router.get('/', getAdmins);
+
 router.post('/', upload.single('profileImage'), addAdmin);
 router.delete('/:id', deleteAdmin);
+
 router.put('/:id', upload.single('profileImage'), updateAdmin);
 
 module.exports = router;
