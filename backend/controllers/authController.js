@@ -14,7 +14,7 @@ const register = async (req, res, next) => {
         name,
         email,
         passwordHash: hash,
-        isAdmin: true 
+        isAdmin: true
       }
     })
 
@@ -49,6 +49,9 @@ const register = async (req, res, next) => {
       }
     })
   } catch (e) {
+    if (e.code === 'P2002' && e.meta?.target?.includes('email')) {
+      return res.status(400).json({ error: 'Email already exists' });
+    }
     next(e)
   }
 }
@@ -99,7 +102,7 @@ const login = async (req, res, next) => {
         name: admin.name,
         email: admin.email_id,
         isAdmin: true,
-        profileUrl: admin.profileUrl 
+        profileUrl: admin.profileUrl
       }
     })
   } catch (e) {
