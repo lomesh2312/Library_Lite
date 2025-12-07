@@ -5,7 +5,7 @@ import App from './App.jsx'
 import axios from 'axios';
 
 // Set default base URL
-axios.defaults.baseURL = 'https://library-lite.onrender.com/';
+axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL || 'https://library-lite.onrender.com/';
 
 
 axios.interceptors.request.use(

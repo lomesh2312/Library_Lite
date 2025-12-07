@@ -36,7 +36,7 @@ const register = async (req, res, next) => {
     }
 
 
-    const token = jwt.sign({ userId: admin.admin_id, isAdmin: true }, process.env.JWT_SECRET || 'secret', { expiresIn: '1h' })
+    const token = jwt.sign({ userId: admin.admin_id, isAdmin: true }, process.env.JWT_SECRET || 'your_jwt_secret_key', { expiresIn: '1h' })
 
     res.json({
       accessToken: token,
@@ -93,7 +93,7 @@ const login = async (req, res, next) => {
     if (!ok) return res.status(401).json({ error: 'Invalid credentials' })
 
 
-    const token = jwt.sign({ userId: admin.admin_id, isAdmin: true }, process.env.JWT_SECRET || 'secret', { expiresIn: '1h' })
+    const token = jwt.sign({ userId: admin.admin_id, isAdmin: true }, process.env.JWT_SECRET || 'your_jwt_secret_key', { expiresIn: '1h' })
 
     res.json({
       accessToken: token,
