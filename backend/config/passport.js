@@ -24,10 +24,10 @@ passport.deserializeUser(async (id, done) => {
 passport.use(
   new GitHubStrategy(
     {
-      clientID: process.env.GITHUB_CLIENT_ID || 'Ov23li3vYO1cEBSZH9J6',
-      clientSecret: process.env.GITHUB_CLIENT_SECRET || '1d4a203fcff8c943cda64e2a6a58ab6e72f38f14',
-      callbackURL: `${process.env.BACKEND_URL || 'https://library-lite.onrender.com'}/api/auth/github/callback`,
-      scope: ["user:email"],
+      clientID: 'Ov23li3vYO1cEBSZH9J6',
+      clientSecret: '1d4a203fcff8c943cda64e2a6a58ab6e72f38f14',
+      callbackURL: 'https://library-lite-1.onrender.com/api/auth/github/callback',
+      scope: ['user:email']
     },
     async function (accessToken, refreshToken, profile, done) {
       try {
