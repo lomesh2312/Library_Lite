@@ -92,4 +92,4 @@ Library_Lite is a modern, full-stack library management system designed to strea
     *   Frontend: `npm run dev`
 
 ---
-*Built with ❤️ by [Your Name]*
+
