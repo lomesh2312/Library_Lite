@@ -22,13 +22,13 @@ Library_Lite is a modern, full-stack library management system designed to strea
 *(Please add screenshots here)*
 
 ### Dashboard
-![Dashboard Placeholder](https://placehold.co/600x400?text=Dashboard+Screenshot)
+![Dashboard](screenshots/dashboard.png)
 
 ### Book List
-![Book List Placeholder](https://placehold.co/600x400?text=Book+List+Screenshot)
+![Book List](screenshots/books.png)
 
 ### Loan Management
-![Loan Management Placeholder](https://placehold.co/600x400?text=Loan+Management+Screenshot)
+![Loan Management](screenshots/loans.png)
 
 ## 🚀 Tutorial & Usage
 
