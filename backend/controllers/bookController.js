@@ -1,5 +1,4 @@
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const prisma = require('../prismaClient');
 
 exports.getBooks = async (req, res) => {
     try {
@@ -9,9 +8,9 @@ exports.getBooks = async (req, res) => {
 
         if (search) {
             where.OR = [
-                { title: { contains: search } }, 
-                { author: { name: { contains: search } } },
-                { isbn: { contains: search } }
+                { title: { contains: search, mode: 'insensitive' } }, 
+                { author: { name: { contains: search, mode: 'insensitive' } } },
+                { isbn: { contains: search, mode: 'insensitive' } }
             ];
         }
 
