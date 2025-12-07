@@ -27,5 +27,10 @@ app.use('/api/members', require('./routes/members'));
 app.use('/api/reports', require('./routes/reports'));
 app.use('/api/admins', require('./routes/admins'));
 
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: err.message, stack: err.stack });
+});
+
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log('Server running on', PORT));
