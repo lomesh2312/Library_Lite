@@ -26,7 +26,7 @@ passport.use(
     {
       clientID: 'Ov23li3vYO1cEBSZH9J6',
       clientSecret: '1d4a203fcff8c943cda64e2a6a58ab6e72f38f14',
-      callbackURL: 'https://library-lite-1.onrender.com/api/auth/github/callback',
+      callbackURL: 'https://library-lite.onrender.com/api/auth/github/callback',
       scope: ['user:email']
     },
     async function (accessToken, refreshToken, profile, done) {
